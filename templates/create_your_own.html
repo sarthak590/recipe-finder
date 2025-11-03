@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container mt-4">
+    <!-- Section Heading -->
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4" style="color: black"><strong>Make your Recipe and send it to your mail</strong></h1>
+        </div>
+    </div>
+</div>
+
+<form action="/create_your_own" method="POST">
+    <div class="mb-3">
+        <input type="text" id="user_input" size="50" class="form-control mx-auto w-auto" name="user_input" placeholder="Enter Ingredients comma (,) separated or name of the dish" required><br><br>
+    </div>
+
+    <div class="mb-3">
+        <select id="num_people" name="num_people" class="form-control mx-auto w-auto" placeholder="Select number of people" required>
+            <option value="1">1 Person</option>
+            <option value="2">2 People</option>
+            <option value="3">3 People</option>
+            <option value="4">4 People</option>
+            <option value="5">5 People</option>
+            <option value="6">6 People</option>
+            <option value="7">7 People</option>
+            <option value="8">8 People</option>
+            <option value="9">9 People</option>
+            <option value="10">10 People</option>
+        </select><br><br>
+    </div>
+
+    <div class="mb-3">
+        <input type="text" id="user_input2" size="50" class="form-control mx-auto w-auto" name="user_input2" placeholder="Preference (veg, non-veg, etc.)" required><br><br>
+    </div>
+
+    <div style="text-align:center">
+        <input type="submit" value="Get Recipe" class="btn btn-primary">
+    </div>
+</form>
+<br>
+<div class="text-center mb-4">
+    {% if recipe_text %}
+    <div class="card h-100">
+        <p>{{ recipe_text|safe }}</p>
+        <form action="/send_to_mail" method="POST">
+            <button  class="btn btn-success mt-3">Send to Email</button>
+        </form>
+    </div>
+    {% endif %}
+    {% if message %}
+        <p style="color: red"><strong>{{ message }}</strong></p>
+    {% endif %}
+</div>
+
+</div>
+{% endblock %}

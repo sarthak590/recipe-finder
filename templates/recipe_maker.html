@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container mt-4">
+    <!-- Section Heading -->
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4" style="color: black"><strong>Find your Recipe</strong></h1>
+        </div>
+    </div>
+</div>
+<form action="/recipe_maker" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="recipe_name" placeholder="Enter Recipe Name" type="Text">
+    </div>
+        <div style="text-align:center">
+        <button  class="btn btn-primary" type="submit">Get Recipe</button>
+    </div>
+</form>
+
+{% endblock %}
+

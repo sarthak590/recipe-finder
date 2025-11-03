@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Dessert Recipes Found</h1>
+    <div class="row g-4">
+        {% for recipe in recipes %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                <img src="{{ recipe.image }}" class="card-img-top" alt="{{ recipe.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text"><strong>Servings:</strong> {{ recipe.servings }}</p>
+                    <h6>Ingredients:</h6>
+                    <ul class="list-group list-group-flush">
+                        {% for ingredient in recipe.extendedIngredients %}
+                        <li class="list-group-item">{{ ingredient.original }}</li>
+                        {% endfor %}
+                    </ul>
+                    <h6 class="mt-3">Instructions:</h6>
+                    <div class="card-text">
+                        {% if recipe.instructions %}
+                        {{ recipe.instructions | safe }}
+                        {% else %}
+                        <p>Instructions are not available for this recipe.</p>
+                        {% endif %}
+                    </div>
+                    <form action="/saved" method="POST">
+                        <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                        <button type="submit" class="btn btn-primary mt-3">Save Recipe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
