@@ -1,5 +1,5 @@
 # RECIPE FINDER
-#### Video Demo:  <URL https://youtu.be/CIOuXzWslFo?si=lZbf4aknQ5obwDhB>
+
 #### Description:
 
 ### INSPIRATION
